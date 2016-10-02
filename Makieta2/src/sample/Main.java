@@ -1,71 +1,70 @@
 package sample;
 
+import javafx.application.Application;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
-import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-
+import javafx.stage.Stage;
 
 public class Main extends Application {
+
     @Override
-    public void start (Stage primaryStage) {
-        try {
-            primaryStage.setTitle("Text/File IO Utility");
+    public void start(Stage primaryStage) throws Exception{
+        try{
+            primaryStage.setTitle("Screen IO Utility");
 
             BorderPane root = new BorderPane();
-
-            VBox rightVBox = new VBox(7);
-
-            TextArea textArea = new TextArea ();
-
-            rightVBox.setPrefWidth(90);
-            textArea.setPrefWidth(250);
-            textArea.setMinHeight(100);
-            textArea.setPrefHeight(120);
-            textArea.setMaxHeight(1200);
+            VBox rightVBox = new VBox(5);
+            VBox leftVBox = new VBox(2);
+            TextArea topTextArea = new TextArea ();
+            TextArea bottomTextArea = new TextArea();
             rightVBox.setPadding(new Insets(10, 10, 10, 10));
+            rightVBox.getStyleClass().add("rightVBox");
+            //rightVBox.setPrefWidth(105);
+            leftVBox.setPrefSize(90,100);
 
-            Button insertFilebtn = new Button("Insert file");
-            Button clearTextbtn = new Button("Clear text");
-            Button runUtilitybtn = new Button("Run Utility");
-            Button saveFilebtn = new Button("Save file");
+            Button runUtilitybtn = new Button("Runtime utility");
+            Button clearsrcbtn = new Button("Clear source");
             Button helpbtn = new Button("Help");
             Button aboutbtn = new Button("About");
-            Button exitbtn = new Button("Exit");
+            Button exitbtn = new Button("Exit after save");
 
-            insertFilebtn.setMinWidth(rightVBox.getPrefWidth());
-            clearTextbtn.setMinWidth(rightVBox.getPrefWidth());
             runUtilitybtn.setMinWidth(rightVBox.getPrefWidth());
-            saveFilebtn.setMinWidth(rightVBox.getPrefWidth());
+            clearsrcbtn.setMinWidth(rightVBox.getPrefWidth());
             helpbtn.setMinWidth(rightVBox.getPrefWidth());
             aboutbtn.setMinWidth(rightVBox.getPrefWidth());
             exitbtn.setMinWidth(rightVBox.getPrefWidth());
 
-
-            BorderedTitledPane btpTextArea = new BorderedTitledPane("Work Area", textArea);
-            BorderedTitledPane btpVBox = new BorderedTitledPane("Run Time", rightVBox);
-
-            root.setRight(btpVBox);
-            root.setLeft(btpTextArea);
-
             rightVBox.getStyleClass().add("rightVBox");
 
-            rightVBox.getChildren().addAll(insertFilebtn, clearTextbtn, runUtilitybtn,saveFilebtn,helpbtn,aboutbtn,exitbtn);
+
+            BorderedTitledPane btprVBox = new BorderedTitledPane("Run Time options", rightVBox);
+            root.setCenter(btprVBox);
+            BorderedTitledPane btplVBox = new BorderedTitledPane("Text IO zone", leftVBox);
+            root.setLeft(btplVBox);
+            BorderedTitledPane btpTopText = new BorderedTitledPane("Source", topTextArea);
+            BorderedTitledPane btpBottomText = new BorderedTitledPane("Output", bottomTextArea);
+
+            leftVBox.getChildren().addAll(btpTopText,btpBottomText);
+            rightVBox.getChildren().addAll(runUtilitybtn,clearsrcbtn,helpbtn,aboutbtn,exitbtn);
             Scene scene = new Scene(root,400,215);
             scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             primaryStage.setScene(scene);
             primaryStage.show();
+
         } catch(Exception e) {
             e.printStackTrace();
         }
-    }
 
+    }
 
     public class BorderedTitledPane extends StackPane {
 
