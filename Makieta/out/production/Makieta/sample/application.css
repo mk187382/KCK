@@ -12,6 +12,8 @@
 }
 
 .rightVBox{
+    -fx-border-color: #000000;
+    -fx-border-width: 1px;
     -fx-padding: 5,0,5,0;
     -fx-spacing: 0;
 }

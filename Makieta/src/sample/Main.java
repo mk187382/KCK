@@ -16,6 +16,7 @@ public class Main extends Application {
     @Override
     public void start (Stage primaryStage) {
         try {
+
             primaryStage.setTitle("Text/File IO Utility");
 
             BorderPane root = new BorderPane();
@@ -24,13 +25,13 @@ public class Main extends Application {
 
             TextArea textArea = new TextArea ();
 
+
             rightVBox.setPrefWidth(90);
             textArea.setPrefWidth(250);
             textArea.setMinHeight(100);
             textArea.setPrefHeight(120);
             textArea.setMaxHeight(1200);
             rightVBox.setPadding(new Insets(10, 10, 10, 10));
-
             Button insertFilebtn = new Button("Insert file");
             Button clearTextbtn = new Button("Clear text");
             Button runUtilitybtn = new Button("Run Utility");
@@ -39,6 +40,12 @@ public class Main extends Application {
             Button aboutbtn = new Button("About");
             Button exitbtn = new Button("Exit");
 
+
+            BorderedTitledPane btpTextArea = new BorderedTitledPane("My Title", textArea);
+            BorderedTitledPane btpVBox = new BorderedTitledPane("My Title", rightVBox);
+
+            root.setRight(btpVBox);
+            root.setLeft(btpTextArea);
             insertFilebtn.setMinWidth(rightVBox.getPrefWidth());
             clearTextbtn.setMinWidth(rightVBox.getPrefWidth());
             runUtilitybtn.setMinWidth(rightVBox.getPrefWidth());
@@ -47,14 +54,8 @@ public class Main extends Application {
             aboutbtn.setMinWidth(rightVBox.getPrefWidth());
             exitbtn.setMinWidth(rightVBox.getPrefWidth());
 
-
-            BorderedTitledPane btpTextArea = new BorderedTitledPane("Work Area", textArea);
-            BorderedTitledPane btpVBox = new BorderedTitledPane("Run Time", rightVBox);
-
-            root.setRight(btpVBox);
-            root.setLeft(btpTextArea);
-
             rightVBox.getStyleClass().add("rightVBox");
+            //textArea.getStyleClass().add("textArea");
 
             rightVBox.getChildren().addAll(insertFilebtn, clearTextbtn, runUtilitybtn,saveFilebtn,helpbtn,aboutbtn,exitbtn);
             Scene scene = new Scene(root,400,215);
@@ -81,6 +82,7 @@ public class Main extends Application {
             getStyleClass().add("bordered-titled-border");
             getChildren().addAll(contentPane, title);
         }
+
     }
 
     public static void main(String[] args) {
