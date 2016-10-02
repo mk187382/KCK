@@ -30,6 +30,7 @@ public class Main extends Application {
             rightVBox.getStyleClass().add("rightVBox");
             //rightVBox.setPrefWidth(105);
             leftVBox.setPrefSize(90,100);
+            leftVBox.setPadding(new Insets(10,10,10,10));
 
             Button runUtilitybtn = new Button("Runtime utility");
             Button clearsrcbtn = new Button("Clear source");
@@ -47,11 +48,28 @@ public class Main extends Application {
 
 
             BorderedTitledPane btprVBox = new BorderedTitledPane("Run Time options", rightVBox);
+            btprVBox.setPrefWidth(600);
             root.setCenter(btprVBox);
             BorderedTitledPane btplVBox = new BorderedTitledPane("Text IO zone", leftVBox);
             root.setLeft(btplVBox);
+            btplVBox.setPrefWidth(250);
             BorderedTitledPane btpTopText = new BorderedTitledPane("Source", topTextArea);
             BorderedTitledPane btpBottomText = new BorderedTitledPane("Output", bottomTextArea);
+
+            runUtilitybtn.setPrefWidth(btprVBox.getPrefWidth());
+            clearsrcbtn.setPrefWidth(btprVBox.getPrefWidth());
+            helpbtn.setPrefWidth(btprVBox.getPrefWidth());
+            aboutbtn.setPrefWidth(btprVBox.getPrefWidth());
+            exitbtn.setPrefWidth(btprVBox.getPrefWidth());
+
+            rightVBox.setPrefHeight(600);
+            runUtilitybtn.setPrefHeight(rightVBox.getPrefHeight() * 0.2);
+            clearsrcbtn.setPrefHeight(rightVBox.getPrefHeight() * 0.2);
+            helpbtn.setPrefHeight(rightVBox.getPrefHeight() * 0.2);
+            aboutbtn.setPrefHeight(rightVBox.getPrefHeight() * 0.2);
+            exitbtn.setPrefHeight(rightVBox.getPrefHeight() * 0.2);
+
+            helpbtn.disableProperty().set(true);
 
             leftVBox.getChildren().addAll(btpTopText,btpBottomText);
             rightVBox.getChildren().addAll(runUtilitybtn,clearsrcbtn,helpbtn,aboutbtn,exitbtn);
