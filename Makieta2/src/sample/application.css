@@ -1,12 +1,12 @@
 .bordered-titled-title {
     -fx-background-color: white;
     -fx-translate-y: -17;
-    -fx-padding: 0 0 5 0;
+    -fx-padding: 7 0 0 0;
 }
 
 .bordered-titled-border {
     -fx-content-display: top;
-    -fx-border-insets: 15 5 15 5;
+    -fx-border-insets: 15 5 5 5;
     -fx-border-color: black;
 }
 
@@ -22,13 +22,9 @@
 	-fx-padding: 0,10,0,10;
 	-fx-border-insets: 5px;
 	-fx-background-insets: 5px;
-	-fx-border-style: solid;
-	-fx-border-color: #000000;
-	-fx-border-width: 2px;
 }
 
 .rightVBox{
-    -fx-padding: 5,0,5,0;
     -fx-spacing: 0;
 }
 
